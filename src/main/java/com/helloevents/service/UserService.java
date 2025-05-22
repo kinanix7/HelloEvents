@@ -1,5 +1,6 @@
 package com.helloevents.service;
 
+import com.helloevents.dto.SignupRequest;
 import com.helloevents.model.User;
 import com.helloevents.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
