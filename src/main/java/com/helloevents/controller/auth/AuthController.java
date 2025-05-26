@@ -1,6 +1,5 @@
 package com.helloevents.controller.auth;
 
-import com.helloevents.dto.JwtResponse;
 import com.helloevents.dto.LoginRequest;
 import com.helloevents.dto.SignupRequest;
 import com.helloevents.security.JwtUtils;
