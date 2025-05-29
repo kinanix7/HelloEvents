@@ -34,6 +34,8 @@ public class ReservationService {
         .collect(Collectors.toList());
 }
 
+
+
     public List<ReservationResponse> getReservationsByEventId(Long eventId) {
         return reservationRepository.findByEventId(eventId).stream()
                 .map(ReservationResponse::new)
@@ -89,6 +91,7 @@ public class ReservationService {
         Reservation savedReservation = reservationRepository.save(reservation);
         return new ReservationResponse(savedReservation);
     }
+
 
 
 }

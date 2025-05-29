@@ -16,6 +16,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/admin/events")
 @PreAuthorize("hasRole('ADMIN')")
+@CrossOrigin("*")
+
 public class AdminEventController {
     @Autowired
     private EventService eventService;

@@ -13,6 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/admin/users")
 @PreAuthorize("hasRole('ADMIN')")
+@CrossOrigin("*")
+
 public class AdminUserController {
     @Autowired
 private UserService userService;

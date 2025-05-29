@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
-import java.util.Base64;
+
 
 @Component
 public class JwtUtils {

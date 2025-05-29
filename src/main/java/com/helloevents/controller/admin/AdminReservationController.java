@@ -12,6 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/admin/reservations")
 @PreAuthorize("hasRole('ADMIN')")
+@CrossOrigin("*")
+
 public class AdminReservationController {
     @Autowired
     private ReservationService reservationService;
@@ -21,6 +23,7 @@ public class AdminReservationController {
     public List<ReservationResponse> getAllReservations() {
         return reservationService.getAllReservations();
     }
+
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -33,4 +36,5 @@ public class AdminReservationController {
         reservationService.deleteReservation(id);
         return "Réservation supprimée avec succès";
     }
+
 }

@@ -2,6 +2,7 @@ package com.helloevents.controller.auth;
 
 import com.helloevents.dto.LoginRequest;
 import com.helloevents.dto.SignupRequest;
+import com.helloevents.dto.Token;
 import com.helloevents.security.JwtUtils;
 import com.helloevents.service.UserService;
 import jakarta.validation.Valid;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin("*")
 public class AuthController {
 
     @Autowired
@@ -28,7 +30,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
-    public String registerUser(@Valid @RequestBody SignupRequest signupRequest) {
+    public Token registerUser(@Valid @RequestBody SignupRequest signupRequest) {
         // Register the user first
         userService.registerUser(signupRequest);
 
@@ -43,11 +45,11 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         // Generate and return JWT token
-        return jwtUtils.generateJwtToken(authentication);
+        return new Token(jwtUtils.generateJwtToken(authentication));
     }
 
     @PostMapping("/signin")
-    public String authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    public Token authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequest.getUsername(), // or getEmail()
@@ -58,6 +60,7 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         // Generate and return JWT token
-        return jwtUtils.generateJwtToken(authentication);
+        return new Token(jwtUtils.generateJwtToken(authentication));
+
     }
 }

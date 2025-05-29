@@ -13,6 +13,6 @@ public class SignupRequest {
     private String username;
     private String email;
     private String password;
-    private User.Role role = User.Role.CLIENT; // Par défaut rôle CLIENT
+    private User.Role role = User.Role.ADMIN; // Par défaut rôle CLIENT
 
 }
